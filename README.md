@@ -1,5 +1,3 @@
 # simple-php-notes
-# simple-php-notes
-# simple-php-notes
-# simple-php-notes
-# simple-php-notes
+
+А что тут собственно написать я хуй знает
