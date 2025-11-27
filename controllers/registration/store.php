@@ -34,9 +34,5 @@ $db->query('insert into users(email, password) values(:email, :password)', [
   'password' => password_hash($_POST['password'], PASSWORD_BCRYPT)
 ]);
 
-$_SESSION['user'] = [
-  'email' => $_POST['email']
-];
-
-header('Location: /');
+header('Location: /login');
 exit();

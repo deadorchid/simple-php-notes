@@ -30,9 +30,9 @@
             <?php if (isset($_SESSION['user'])) : ?>
               <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                 <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">Open user menu</span>
+                <span class="sr-only">Open user menu</span>
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
-            </button>
+              </button>
             <?php else : ?>
                 <a href="/register" class="<?=selectNavByURI("/register")?> rounded-md px-3 py-2 text-sm font-medium">Register</a>
                 <a href="/login" class="<?=selectNavByURI("/login")?> rounded-md px-3 py-2 text-sm font-medium">Login</a>
@@ -44,6 +44,9 @@
                 <a href="#" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Sign out</a>
               </el-menu>
             </el-dropdown>
+          <?php if (isset($_SESSION['user'])) : ?>
+            <a href="/logout" class="<?=selectNavByURI("/logout")?> rounded-md px-3 py-2 text-sm font-medium">Logout</a>
+          <?php endif; ?>
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
