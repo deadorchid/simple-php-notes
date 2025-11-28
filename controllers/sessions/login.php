@@ -2,6 +2,7 @@
 
 use Core\Validator;
 use Core\App;
+use Core\Session;
 
 $errors = [];
 
@@ -27,17 +28,7 @@ $user = $db->query(
     ['email' => $_POST['email']]
 )->find();
 
-
-if (!$user) {
-    $errors['email'] = 'Incorrect email or password';
-
-    return view('views/sessions/login.view.php', [
-          'heading' => 'Log in',
-          'errors' => $errors
-    ]);
-}
-
-if (password_verify($_POST['password'], $user['password'])) {
+if ($user && password_verify($_POST['password'], $user['password'])) {
     $_SESSION['user'] = [
       'email' => $_POST['email']
     ];
@@ -47,10 +38,9 @@ if (password_verify($_POST['password'], $user['password'])) {
     exit();
 }
 
-
 $errors['email'] = 'Incorrect email or password';
 
-return view('views/sessions/login.view.php', [
-      'heading' => 'Log in',
-      'errors' => $errors
-]);
+Session::flash('errors', $errors);
+
+header('Location: /login');
+exit();
